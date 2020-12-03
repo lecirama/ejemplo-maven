@@ -12,17 +12,13 @@ pipeline {
         
         stage('Test_Code') {
             steps {
-                 {
                     sh './mvnw clean test -e'
                 }
             }
-        }
         
         stage('Jar_Code') {
             steps {
-                 {
                     sh './mvnw clean package -e'
-                }
             }
         }
         
@@ -34,8 +30,17 @@ pipeline {
 	    
         stage('Run_Jar') {
             steps {
-                 {
                     sh 'nohup ./mvnw spring-boot:run &'
-                }
             }
         }
+
+        stage('Testing_App') {
+	           steps {
+		          sleep 20
+		               {
+		          	   sh 'curl -X GET http://localhost:8081/rest/mscovid/test?msg=testing'
+	   	                }
+	                }
+             }
+    }
+   }
