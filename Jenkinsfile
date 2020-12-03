@@ -7,6 +7,7 @@ pipeline {
             steps {
                         sh './mvnw clean compile -e'
                    }
+
         }
         
         stage('Test_Code') {
@@ -38,14 +39,3 @@ pipeline {
                 }
             }
         }
-
-        stage('Testing_App') {
-	steps {
-		sleep 20
-		{
-			sh 'curl -X GET http://localhost:8081/rest/mscovid/test?msg=testing'
-		}
-	}
-    }
-    }
-   }
