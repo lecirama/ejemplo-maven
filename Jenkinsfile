@@ -21,9 +21,9 @@ pipeline {
         
         stage('Jar_Code') {
             steps {
-                 dir ('/Users/maricelrodriguez/diplomado/ejemplo-maven') {
+                 
                     sh './mvnw clean package -e'
-                }
+                
             }
         }
 
@@ -37,19 +37,19 @@ pipeline {
  
         stage('Run_Jar') {
             steps {
-                dir ('/Users/maricelrodriguez/diplomado/ejemplo-maven') {
+                
                     sh 'nohup ./mvnw spring-boot:run &'
-                }
+                
             }
         }
         
         stage('Testing_App') {
-    steps {
+        steps {
         sleep 20
-        dir ('/Users/maricelrodriguez/diplomado/ejemplo-maven') {
+        
             sh 'curl -X GET http://localhost:8081/rest/mscovid/test?msg=testing'
+        
+            }
         }
-    }
-}
     }
    }
