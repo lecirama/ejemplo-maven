@@ -5,7 +5,7 @@ pipeline {
         
         stage('Compile_Code') {
             steps {
-                dir ('/Users/maricelrodriguez/diplomado/ejemplo-maven') {
+                 {
                     sh './mvnw clean compile -e'
                 }
             }
@@ -13,7 +13,7 @@ pipeline {
         
         stage('Test_Code') {
             steps {
-                 dir ('/Users/maricelrodriguez/diplomado/ejemplo-maven') {
+                 {
                     sh './mvnw clean test -e'
                 }
             }
@@ -27,13 +27,13 @@ pipeline {
             }
         }
 
-	stage('SonarQube') {
-		steps {
-		    withSonarQubeEnv('sonar') { // You can override the credential to be used
-		      sh './mvnw org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
-		    }
-		}
-	}	
+    stage('SonarQube') {
+        steps {
+            withSonarQubeEnv('sonar') { // You can override the credential to be used
+              sh './mvnw org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
+            }
+        }
+    }   
  
         stage('Run_Jar') {
             steps {
@@ -44,12 +44,12 @@ pipeline {
         }
         
         stage('Testing_App') {
-	steps {
-		sleep 20
-		dir ('/Users/maricelrodriguez/diplomado/ejemplo-maven') {
-			sh 'curl -X GET http://localhost:8081/rest/mscovid/test?msg=testing'
-		}
-	}
+    steps {
+        sleep 20
+        dir ('/Users/maricelrodriguez/diplomado/ejemplo-maven') {
+            sh 'curl -X GET http://localhost:8081/rest/mscovid/test?msg=testing'
+        }
+    }
 }
     }
    }
