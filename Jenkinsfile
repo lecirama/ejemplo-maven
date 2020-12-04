@@ -5,7 +5,7 @@ pipeline {
         
         stage('Compile_Code') {
             steps {
-                dir ('/Users/maricelrodriguez/diplomado/ejemplo-maven') {
+                 {
                     sh './mvnw clean compile -e'
                 }
             }
@@ -52,4 +52,4 @@ pipeline {
 	}
 }
     }
-   }
+ }
