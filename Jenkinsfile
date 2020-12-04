@@ -5,17 +5,17 @@ pipeline {
         
         stage('Compile_Code') {
             steps {
-                 {
+                 
                     sh './mvnw clean compile -e'
-                }
+                
             }
         }
         
         stage('Test_Code') {
             steps {
-                 {
+                 
                     sh './mvnw clean test -e'
-                }
+                
             }
         }
         
